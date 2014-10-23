@@ -1,4 +1,3 @@
 gameproject1
 ============
-
-O_____________O
+made by Kjes
