@@ -1,13 +1,13 @@
-import java.awt.*;
+import java.awt.*;//graphical elements
 import java.awt.event.*;
-
+// added annotations
 public class Character{
-	private Frame Cframe;
-	private Frame tempC;
+//	private Frame Cframe; frame is rudundant purpose was as statsFrame
+	private Frame tempC; //frame for new character
 	private Label instructL;
 	private TextField nameF;
 	private Panel Cpanel;
-	private Button submit;
+	private Button submit;// button here so accessible outside Character constructor, there may not be a erason for this...
 	private Frame charClass;
 	private Frame statsFrame;
 	private Label namel;
@@ -20,19 +20,19 @@ public class Character{
 	private Label Intl;
 	private Label chal;
 	private Label wisl;
-	int gil = 0;
-	int hp;
+	int gil = 0;//money
+	int hp;//life
 	int lvl= 1;
 	int xp = 0;
-	int str;
-	int cha;
-	int con;
-	int dex;
-	int wis;
-	int Int;
-	public Dice d20 = new Dice(5,6);
-	public Dice mod =  new Dice(3,6);
-	public Dice Dlvl = new Dice(1,3);
+	int str;//strength value
+	int cha;//charisma value
+	int con;//constitution value
+	int dex;//dexterity value
+	int wis;//wisdom value
+	int Int;//intelegence value
+	public Dice d6 = new Dice(5,6);// d20(changed) rolls to 30? should be d6's; rolls 5 d6; need to add dice class (oops)
+	public Dice mod =  new Dice(3,6);// stat modifier for improved stats
+	public Dice Dlvl = new Dice(1,3);// lvl up dice
 	
 	String name;
 	String Class;
@@ -44,18 +44,18 @@ public class Character{
 	private Label conStatsInt;
 	private Label conStatsCha;
 	private Label conStatsWis;
-	public Character (){
-		tempC = new Frame ("new character");
+	public Character (){// constructor
+		tempC = new Frame ("new character");// frame titled "new character"
 		tempC.setSize(300,200);
-		tempC.setLocationRelativeTo(null);
+		tempC.setLocationRelativeTo(null);//centralized frame
 		tempC.setLayout(new GridLayout(3,1));
 		tempC.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent windowEvent){
             System.exit(0);
-         }        
+         }        //ends program
 		});
-		GridBagLayout layout = new GridBagLayout();
-		nameF = new TextField(30);
+		GridBagLayout layout = new GridBagLayout();//customizable layout based on grid quadinates 
+		nameF = new TextField(30);//allows a player to choose a name.
 		Cpanel = new Panel();
 		Cpanel.setLayout (layout);
 		instructL = new Label();
@@ -71,7 +71,7 @@ public class Character{
 			gbc.gridy = 0 ;
 			Cpanel.add(submit,gbc);
 		submit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {// class choice after name is entered
 					Button rog = new Button("rogue");
 					rog.setActionCommand("rog");
 					rog.addActionListener(new ButtonClickListenerC());
@@ -123,10 +123,10 @@ public class Character{
 		tempC.add(Cpanel);
 		tempC.setVisible(true);
 	}
-	public void displayStats(){
+	public void displayStats(){//displayes all values displayed here, with values the weapons, AC, armor etc, will be displayed in Inventory.java, and will be created from ItemCodex.java (neither here yet)
 	statsFrame = new Frame(name+", "+Class+", level: "+lvl);
 	statsFrame.setSize(300,300);
-	statsFrame.setLocation(1000,200);
+	statsFrame.setLocation(1000,200);// sets location as fixed to almost the right edge, problem when scaling down needs adressing
 	statsFrame.addWindowListener(new WindowAdapter() {
 		public void windowClosing(WindowEvent windowEvent){
 			statsFrame.dispose();
@@ -186,7 +186,7 @@ public class Character{
 			statsFrame.setVisible(true);
 			updateStats();
 	}
-	public void updateStats(){
+	public void updateStats(){// changes the values of the stats labels, should be used whenever a stat change might happen, every turn may be advisable
 		statsFrame.setTitle("Stats :"+ name+", "+Class+", level: "+lvl);
 		levell.setText("level: "+lvl);
 		xpl.setText("exp: " + xp);
@@ -197,7 +197,7 @@ public class Character{
 		chal.setText("charisma: "+ cha);
 		wisl.setText("wisdom: "+ wis);
 	}
-	public void confirmStats(){
+	public void confirmStats(){// displays statsGen 
 		conStatsF = new Frame("confirm stats");
 		conStatsF.setLocation(500,200);
 		conStatsStr = new Label("strength :"+ str);
@@ -275,30 +275,30 @@ public class Character{
 				}
 			}
 		}
-	public void genStats(){
+	public void genStats(){//generates stats, based on class
 		if(Class.equals("Rogue")){			
-			str = d20.rollMinusLowest();
-			con = d20.rollMinusLowest();
-			dex = d20.rollMinusLowest()+mod.rollMinusLowest();
-			Int = d20.rollMinusLowest();
-			cha = d20.rollMinusLowest()+mod.rollMinusLowest();
-			wis = d20.rollMinusLowest();
+			str = d6.rollMinusLowest();
+			con = d6.rollMinusLowest();
+			dex = d6.rollMinusLowest()+mod.rollMinusLowest();
+			Int = d6.rollMinusLowest();
+			cha = d6.rollMinusLowest()+mod.rollMinusLowest();
+			wis = d6.rollMinusLowest();
 		}
 		else if(Class.equals("Warrior")){
-			str = d20.rollMinusLowest()+mod.rollMinusLowest();
-			con = d20.rollMinusLowest()+mod.rollMinusLowest();
-			dex = d20.rollMinusLowest();
-			Int = d20.rollMinusLowest();
-			cha = d20.rollMinusLowest();
-			wis = d20.rollMinusLowest();
+			str = d6.rollMinusLowest()+mod.rollMinusLowest();
+			con = d6.rollMinusLowest()+mod.rollMinusLowest();
+			dex = d6.rollMinusLowest();
+			Int = d6.rollMinusLowest();
+			cha = d6.rollMinusLowest();
+			wis = d6.rollMinusLowest();
 		}
 		else if(Class.equals("Mage")){
-			str = d20.rollMinusLowest();
-			con = d20.rollMinusLowest();
-			dex = d20.rollMinusLowest();
-			Int = d20.rollMinusLowest()+mod.rollMinusLowest();
-			cha = d20.rollMinusLowest();
-			wis = d20.rollMinusLowest()+mod.rollMinusLowest();
+			str = d6.rollMinusLowest();
+			con = d6.rollMinusLowest();
+			dex = d6.rollMinusLowest();
+			Int = d6.rollMinusLowest()+mod.rollMinusLowest();
+			cha = d6.rollMinusLowest();
+			wis = d6.rollMinusLowest()+mod.rollMinusLowest();
 		}
 	}
 	
@@ -341,13 +341,13 @@ private class ButtonClickListenerC implements ActionListener{
 			cha+=Dlvl.roll()-1;
 			wis+=Dlvl.roll();
 		}
-		if(str>100)str=100;
+		if(str>100)str=100;//max in any stat  100
 		if(con>100)con=100;
 		if(dex>100)dex=100;
 		if(Int>100)Int=100;
 		if(cha>100)cha=100;
 		if(wis>100)wis=100;
-		if(str==100&&con==100&&dex==100&&Int==100&&cha==100&&wis==100)lvl--;
+		if(str==100&&con==100&&dex==100&&Int==100&&cha==100&&wis==100)lvl--;//max level is the level when all stats max, usually between 80 and 120
 			if(lvl > oldLvl){
 				xp=0;
 				LVLUP = new Frame ("level up!");
@@ -374,7 +374,7 @@ private class ButtonClickListenerC implements ActionListener{
 			updateStats();
 			}
 		}
-public static void main(String[] args){
+public static void main(String[] args){//will not be removed present for test executions 
 	Character chara = new Character();
 	}
 }
