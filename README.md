@@ -9,7 +9,7 @@ V0.0.1b: main class is currently not present;the codex class is not runabble ATM
 ______________________________________________________________
 future versions:
 ______________________________________________________________
-V0.1.0: will be first full working version
+V0.1.0: will be first full working version;
 V0.0.2: expect finished itemcodex(ItemCodex.java), mobs(Bestiary.java),and inventory(Inventory.java), expansions to character           maybe something on the main class
 __________________________________________________________________
 instalation:
