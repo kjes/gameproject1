@@ -17,7 +17,7 @@ public class ItemCodex{
 		else if(t<=100)item();
 	}
 	public class Item{
-		String name;
+		String name = "pasta";
 		String description;
 		int value;
 		int quantity = 0;
@@ -41,14 +41,14 @@ public class ItemCodex{
 	public void weapon(){
 		Weapon weapon = new Weapon();
 		int wm = D100.roll();
-		if(wm>95)weapon.mat = 15;//special
-		else if(wm>90){weapon.mat = 14;weapon.matMult= 1.4;}//ancient r
-		else if(wm>85){weapon.mat = 13;weapon.matMult= 1.3;}//enchanted r
+		if(wm>96)weapon.mat = 15;//special
+		else if(wm>93){weapon.mat = 14;weapon.matMult= 1.4;}//ancient r
+		else if(wm>87){weapon.mat = 13;weapon.matMult= 1.3;}//enchanted r
 		else if(wm>80){weapon.mat = 12;weapon.matMult= 2;}//elven
 		else if(wm>75){weapon.mat = 11;weapon.matMult= 1.5;}//oak
 		else if(wm>65){weapon.mat = 10;weapon.matMult= 1;}//beech
-		else if(wm>60){weapon.mat = 9;weapon.matMult=0.5;}//ash
-		else if(wm>55){weapon.mat = 8;weapon.matMult=1.5;}//ancient m
+		else if(wm>55){weapon.mat = 9;weapon.matMult=0.5;}//ash
+		else if(wm>53){weapon.mat = 8;weapon.matMult=1.5;}//ancient m
 		else if(wm>50){weapon.mat = 7;weapon.matMult=1.4;}//enchanted m
 		else if(wm>45){weapon.mat = 6;weapon.matMult=3.5;}//dwarven
 		else if(wm>40){weapon.mat = 5;weapon.matMult=2.5;}//glass
@@ -68,25 +68,25 @@ public class ItemCodex{
 					else if(wm>40){weapon.mats = 5;weapon.matMult *= 2.5;}//glass
 					else if(wm>35){weapon.mats = 4;weapon.matMult *= 2;}//mithril
 					else if(wm>30){weapon.mats = 3;weapon.matMult *= 1.5;}//steel
-					else if(wm>25){weapon.mats = 2;weapon.matMult *= 1;}//iron 
+					else if(wm>15){weapon.mats = 2;weapon.matMult *= 1;}//iron 
 					else{weapon.mat = 1;weapon.matMult*=0.5;} //copper
 				break;
 			case(7):
 				wm = D100.roll();
 					if(wm>80){weapon.mats = 6;weapon.matMult *= 3.5;}//dwarven
-					else if(wm>70){weapon.mats = 5;weapon.matMult *= 2.5;}//glass
-					else if(wm>50){weapon.mats = 4;weapon.matMult *= 2;}//mithril
+					else if(wm>80){weapon.mats = 5;weapon.matMult *= 2.5;}//glass
+					else if(wm>60){weapon.mats = 4;weapon.matMult *= 2;}//mithril
 					else if(wm>40){weapon.mats = 3;weapon.matMult *= 1.5;}//steel
-					else if(wm>30){weapon.mats = 2;weapon.matMult *= 1;}//iron 
+					else if(wm>15){weapon.mats = 2;weapon.matMult *= 1;}//iron 
 					else{weapon.mat = 1;weapon.matMult*=0.5;} //copper
 				break;
 			case(8):
 				wm = D100.roll();
 					if(wm>80){weapon.mats = 6;weapon.matMult *= 3.5;}//dwarven
-					else if(wm>70){weapon.mats = 5;weapon.matMult *= 2.5;}//glass
-					else if(wm>50){weapon.mats = 4;weapon.matMult *= 2;}//mithril
+					else if(wm>80){weapon.mats = 5;weapon.matMult *= 2.5;}//glass
+					else if(wm>60){weapon.mats = 4;weapon.matMult *= 2;}//mithril
 					else if(wm>40){weapon.mats = 3;weapon.matMult *= 1.5;}//steel
-					else if(wm>30){weapon.mats = 2;weapon.matMult *= 1;}//iron 
+					else if(wm>15){weapon.mats = 2;weapon.matMult *= 1;}//iron 
 					else{weapon.mat = 1;weapon.matMult*=0.5;} //copper
 				break;
 			case(13):
@@ -121,9 +121,9 @@ public class ItemCodex{
 			else if(td > 10){weapon.type=1;weapon.diceNo=3;weapon.diceMax=16;}//sword max DMG W/o crit or multipliers = 48
 			else{weapon.type=0;weapon.diceNo=1;weapon.diceMax=25;}// dagger dmg w/o multiplier or crit = 25 ancient dwarven dagger = 437.5 = 438
 			if (weapon.mat<7&&weapon.mat !=0)weapon.name=(weaponMaterial[weapon.mat]+" "+weaponType[weapon.type]);
-			else if(weapon.mat >=7 || weapon.mat == 0)weapon.name=(weaponMaterial[weapon.mat]+" "+weaponMaterial[weapon.mats]+" "+weaponType[weapon.type]);
+			else if(weapon.mat ==7|| weapon.mat==8 || weapon.mat == 0)weapon.name=(weaponMaterial[weapon.mat]+" "+weaponMaterial[weapon.mats]+" "+weaponType[weapon.type]);
 		}
-		else if(((weapon.mat==0&&weapon.mats>6)||weapon.mat>8)&& weapon.mat<15){
+		else if(((weapon.mat==0&&weapon.mats>8)||weapon.mat>8)&& weapon.mat<15){
 			//rngweapon[]
 			if(td > 90){weapon.type=8;weapon.diceNo=1;weapon.diceMax=100;}//flintlock max dmg = 100 
 			else if(td > 80){weapon.type=7;weapon.diceNo=4;weapon.diceMax=20;}//dart MD = 80
@@ -134,8 +134,15 @@ public class ItemCodex{
 			else if(td > 30){weapon.type=2;weapon.diceNo=2;weapon.diceMax=30;}// longbow = 60
 			else if(td > 20){weapon.type=1;weapon.diceNo=2;weapon.diceMax=20;}//crossbow = 40
 			else{weapon.type=0;weapon.diceNo=2;weapon.diceMax=15;}//bow = 30
-			if (weapon.mat<13&&weapon.mats !=0)weapon.name=(weaponMaterial[weapon.mat] +rngWeapon[weapon.type]);
-			else if(weapon.mat >=7 || weapon.mat == 0)weapon.name=(weaponMaterial[weapon.mat]+" "+weaponMaterial[weapon.mats]+" "+rngWeapon[weapon.type]);
+			if (weapon.mat<13&&weapon.mat !=0){
+				if (weapon.type>4&&weapon.mat<11)weapon.name=(rngXTRmaterials[weapon.mat%3] +" "+ rngWeapon[weapon.type]);
+				else weapon.name=(weaponMaterial[weapon.mat] + " " +rngWeapon[weapon.type]);
+				}
+			else if(weapon.mat >=13 || weapon.mat == 0 ){
+				if((weapon.type>4&&weapon.mats<11))weapon.name=(weaponMaterial[weapon.mat]+" "+rngXTRmaterials[weapon.mats%3]+" "+rngWeapon[weapon.type]);
+			else weapon.name=(weaponMaterial[weapon.mat]+" "+weaponMaterial[weapon.mats]+" "+rngWeapon[weapon.type]);
+			
+			}
 		}
 		else if(weapon.mat==15){
 		//special[]
