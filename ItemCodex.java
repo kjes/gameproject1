@@ -1,3 +1,21 @@
+public class ItemCodex{
+	String[] weaponType = {"dagger","sword","hand-axe","mace","longsword","great-sword","war-axe","warhammer","katana"};
+	String[] weaponMaterial = {"broken","copper","iron","steel","mithril","glass","dwarven","enchanted","ancient","ash","beech","oak","elven","enchanted","ancient",""}; 
+	String[] rngWeapon = {"shortbow", "crossbow", "long bow","composite bow","repeater crossbow","shuriken","throwing knife","poison dart","flint-lock pistol"};
+	String[] specialWeapons = {"stick","spear","halberd","wrath's bane","fallen blade","end of night","edge of chaos","sword of the dweller","undying blade","blackDeath","deathSythe","sword of the mad god","Excalibur","god mode"};
+	String[] rngXTRmaterials ={"iron","steel","mithril"};
+	String[] armorMaterial = {"cloth","leather","chainMail","iron scale","plate iron","steel","glass","dwarven","ancient","enchanted"};
+	String[] items = {"health potion","ankh","trinket"};
+	String[] itemdes = {"a healing potion that restores some hit points","used to bring the dead back to life","a small piece of jewellery, it's probably worth a bit"};
+	Dice D100 =new Dice(1,100);
+	public ItemCodex(){
+	}
+	public void newItem(){
+		int t = D100.roll();
+		if(t<=33)armor();
+		else if(t<=66)weapon();
+		else if(t<=100)item();
+	}
 	public class Item{
 		String name;
 		String description;
