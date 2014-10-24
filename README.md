@@ -13,8 +13,8 @@ V0.1.0: will be first full working version
 
 V0.0.2: expect finished itemcodex(ItemCodex.java), mobs(Bestiary.java),and inventory(Inventory.java), expansions to character           maybe something on the main class
 __________________________________________________________________
-instalation:
+Compatability:
 _______________________________________________________________
  if file will not run in this maybe to do with java version, this will be compiled in either java 7 or 8 and may not be compatable with earlier versions, update your java. if java is up to date then place a ticket on :      
   https://github.com/kjes/gameproject1
-  
+ should function on any system running java
