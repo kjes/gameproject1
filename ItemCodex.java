@@ -17,7 +17,7 @@ public class ItemCodex{
 		else if(t<=100)item();
 	}
 	public class Item{
-		String name = "pasta";
+		String name;
 		String description;
 		int value;
 		int quantity = 0;
