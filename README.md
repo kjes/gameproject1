@@ -5,7 +5,7 @@ credit to: lbarbs; for dice class
 ____________________________________________________________________________________
 version log
 ____________________________________________________________________________________
-V0.0.1b: main class is currently not present;the codex class is not runabble ATM, but is here anyway, the character class can be          compiled and ran however is also not complete, heavy modification to be expected to the ItemCodex.java, generally               looking at armor and standard item generation; a lot of current will change. 
+V0.0.1b: main class is currently not present;the codex class is not runabble ATM, but is here anyway, the character class can be          compiled and ran however is also not complete, heavy modification to be expected to the ItemCodex.java, generally               looking at armor and standard item generation; a lot of current will change. also needs a name
 ______________________________________________________________
 future versions:
 ______________________________________________________________
